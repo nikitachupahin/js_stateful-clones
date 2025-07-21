@@ -33,12 +33,15 @@ function transformStateWithClones(state, actions) {
   return stateHistory;
 }
 
-function addProperties(state, extraData) {
-  return Object.assign(state, extraData);
+function addProperties(currentState, extraData) {
+  return {
+    ...currentState,
+    ...extraData,
+  };
 }
 
-function removeProperties(state, keysToRemove) {
-  const newState = { ...state };
+function removeProperties(currentState, keysToRemove) {
+  const newState = { ...currentState };
 
   for (const key of keysToRemove) {
     delete newState[key];
